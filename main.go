@@ -20,7 +20,12 @@ func main() {
 		operationhandlers.Delete(idArgToInt(os.Args[2]))
 	case "list":
 		operationhandlers.List()
-
+	case "mark-in-progress":
+		operationhandlers.MarkInProgress(idArgToInt(os.Args[2]))
+	case "mark-done":
+		operationhandlers.MarkDone(idArgToInt(os.Args[2]))
+	case "mark-todo":
+		operationhandlers.MarkTodo(idArgToInt(os.Args[2]))
 	}
 
 }
