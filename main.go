@@ -19,7 +19,18 @@ func main() {
 	case "delete":
 		operationhandlers.Delete(idArgToInt(os.Args[2]))
 	case "list":
-		operationhandlers.List()
+		if len(os.Args) > 2 {
+			switch os.Args[2] {
+			case "todo":
+				operationhandlers.ListTodo()
+			case "in-progress":
+				operationhandlers.ListInProgress()
+			case "done":
+				operationhandlers.ListDone()
+			}
+		} else {
+			operationhandlers.List()
+		}
 	case "mark-in-progress":
 		operationhandlers.MarkInProgress(idArgToInt(os.Args[2]))
 	case "mark-done":
