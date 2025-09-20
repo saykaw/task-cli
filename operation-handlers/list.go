@@ -9,5 +9,7 @@ import (
 func List() {
 	loadedTasks := filehandlers.LoadFile()
 	fmt.Printf("Here are your tasks:\n")
-	fmt.Println(loadedTasks)
+	for _, task := range loadedTasks {
+		fmt.Printf("ID: %d | Description: %s | Status: %s | Created Time: %v | Updated Time : %v |\n", task.Id, task.TaskDescription, task.Status, task.CreatedAt, task.UpdatedAt)
+	}
 }

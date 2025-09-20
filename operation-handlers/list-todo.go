@@ -16,5 +16,7 @@ func ListTodo() {
 		}
 	}
 	fmt.Print("Your todo tasks are:\n")
-	fmt.Print(todoTasks)
+	for _, task := range todoTasks {
+		fmt.Printf("ID: %d | Description: %s | Status: %s | Created Time: %v | Updated Time : %v |\n", task.Id, task.TaskDescription, task.Status, task.CreatedAt, task.UpdatedAt)
+	}
 }

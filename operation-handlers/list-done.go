@@ -16,5 +16,7 @@ func ListDone() {
 		}
 	}
 	fmt.Print("Your done tasks are:\n")
-	fmt.Print(doneTasks)
+	for _, task := range doneTasks {
+		fmt.Printf("ID: %d | Description: %s | Status: %s | Created Time: %v | Updated Time : %v |\n", task.Id, task.TaskDescription, task.Status, task.CreatedAt, task.UpdatedAt)
+	}
 }

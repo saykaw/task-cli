@@ -16,5 +16,7 @@ func ListInProgress() {
 		}
 	}
 	fmt.Print("Your in-progress tasks are:\n")
-	fmt.Print(inProgressTasks)
+	for _, task := range inProgressTasks {
+		fmt.Printf("ID: %d | Description: %s | Status: %s | Created Time: %v | Updated Time : %v |\n", task.Id, task.TaskDescription, task.Status, task.CreatedAt, task.UpdatedAt)
+	}
 }

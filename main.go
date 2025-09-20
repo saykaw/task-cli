@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"strconv"
 
 	operationhandlers "github.com/saykaw/task-cli/operation-handlers"
 )
@@ -15,9 +14,9 @@ func main() {
 	case "add":
 		operationhandlers.Add(os.Args[2])
 	case "update":
-		operationhandlers.Update(idArgToInt(os.Args[2]), os.Args[3])
+		operationhandlers.Update(operationhandlers.IdArgToInt(os.Args[2]), os.Args[3])
 	case "delete":
-		operationhandlers.Delete(idArgToInt(os.Args[2]))
+		operationhandlers.Delete(operationhandlers.IdArgToInt(os.Args[2]))
 	case "list":
 		if len(os.Args) > 2 {
 			switch os.Args[2] {
@@ -32,19 +31,11 @@ func main() {
 			operationhandlers.List()
 		}
 	case "mark-in-progress":
-		operationhandlers.MarkInProgress(idArgToInt(os.Args[2]))
+		operationhandlers.MarkInProgress(operationhandlers.IdArgToInt(os.Args[2]))
 	case "mark-done":
-		operationhandlers.MarkDone(idArgToInt(os.Args[2]))
+		operationhandlers.MarkDone(operationhandlers.IdArgToInt(os.Args[2]))
 	case "mark-todo":
-		operationhandlers.MarkTodo(idArgToInt(os.Args[2]))
+		operationhandlers.MarkTodo(operationhandlers.IdArgToInt(os.Args[2]))
 	}
 
-}
-
-func idArgToInt(arg string) int {
-	id, err := strconv.Atoi(arg)
-	if err != nil {
-		fmt.Println("Invalid ID. Please provide a numeric ID.")
-	}
-	return id
 }
