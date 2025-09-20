@@ -15,16 +15,20 @@ func main() {
 	case "add":
 		operationhandlers.Add(os.Args[2])
 	case "update":
-		id, err := strconv.Atoi(os.Args[2])
-		if err != nil {
-			fmt.Print("Error converting id to int:", err.Error())
-		}
-		operationhandlers.Update(id, os.Args[3])
+		operationhandlers.Update(idArgToInt(os.Args[2]), os.Args[3])
 	case "delete":
-		fmt.Print("delete")
+		operationhandlers.Delete(idArgToInt(os.Args[2]))
 	case "list":
 		operationhandlers.List()
 
 	}
 
+}
+
+func idArgToInt(arg string) int {
+	id, err := strconv.Atoi(arg)
+	if err != nil {
+		fmt.Println("Invalid ID. Please provide a numeric ID.")
+	}
+	return id
 }
